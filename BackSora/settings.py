@@ -159,7 +159,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR
-STATICFILES_DIRS = ['BackSora/static']
+STATICFILES_DIRS = ['rest_framework']
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 #MEDIA CONFIG
