@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
+import dj_database_url
 
 load_dotenv()
 
@@ -59,6 +60,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'UserSora',
     'TipsSora',
     'NoteSora',
@@ -107,14 +110,13 @@ WSGI_APPLICATION = 'BackSora.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sorora',
-        'USER' : 'root',
-        'PASSWORD' : '',
-        'HOST' : 'localhost',
-        'PORT' : '3306'
-    }
+    'default': dj_database_url.config(default = os.getenv('DATABASE_URL'))        
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'sorora',
+        #'USER' : 'root',
+        #'PASSWORD' : '',
+        #'HOST' : 'localhost',
+        #'PORT' : '3306'    
 }
 
 
@@ -157,6 +159,13 @@ STATIC_URL = 'static/'
 #MEDIA CONFIG
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : os.getenv('CLOUD_NAME'),
+    'API_KEY' : os.getenv('API_KEY'),
+    'API_SECRET' : os.getenv('API_SECRET')
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
