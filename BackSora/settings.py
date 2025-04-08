@@ -32,6 +32,7 @@ SECRET_KEY = 'django-insecure-6km%a#n0x6+%9yukl4k9m6kzcp6r&t!+!ah56k=k7c#2n_u*2o
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 #REST AND SIMPLE JWT CONFIG
 
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
+    'whitenoise.runserver_nostatic',
     'UserSora',
     'TipsSora',
     'NoteSora',
@@ -75,6 +77,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,6 +158,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 #MEDIA CONFIG
 MEDIA_ROOT = BASE_DIR / 'media'
