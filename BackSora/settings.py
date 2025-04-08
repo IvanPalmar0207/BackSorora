@@ -158,6 +158,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR
+STATICFILES_DIRS = ['BackSora/static']
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 #MEDIA CONFIG
