@@ -9,6 +9,58 @@ from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from .models import User, ageUser_tb, educationLevelUser_tb, relationKindUser_tb, workUser_tb, rangeSalary_tb
+from .serializer import AgeUserSerializer, EducationUserSerializer, RelationUserSerializer, WorkUserSerializer, SalaryUserSerializer
+
+#Age Views
+class AgeUserViewSet(viewsets.ModelViewSet):
+    queryset = ageUser_tb.objects.all()
+    serializer_class = AgeUserSerializer
+    permission_classes = [IsAuthenticated]
+    
+    @classmethod
+    def get_extra_actions(cls):
+        return []
+    
+#Education Views
+class EducationUserViewSet(viewsets.ModelViewSet):
+    queryset = educationLevelUser_tb.objects.all()
+    serializer_class = EducationUserSerializer
+    permission_classes = [IsAuthenticated]
+
+    @classmethod
+    def get_extra_actions(cls):
+        return []
+    
+#Relation Views
+class RelationUserViewSet(viewsets.ModelViewSet):
+    queryset = relationKindUser_tb.objects.all()
+    serializer_class = RelationUserSerializer
+    permission_classes = [IsAuthenticated]
+    
+    @classmethod
+    def get_extra_actions(cls):
+        return []
+
+#Work Views
+class WorkUserViewSet(viewsets.ModelViewSet):
+    queryset = workUser_tb.objects.all()
+    serializer_class = WorkUserSerializer
+    permission_classes = [IsAuthenticated]
+    
+    @classmethod
+    def get_extra_actions(cls):
+        return []
+
+#Salary Views
+class SalaryUserViewSet(viewsets.ModelViewSet):
+    queryset = rangeSalary_tb.objects.all()
+    serializer_class = SalaryUserSerializer
+    permission_classes = [IsAuthenticated]
+    
+    @classmethod
+    def get_extra_actions(cls):
+        return []
 
 #User Views
 class UserViewSet(viewsets.ModelViewSet):

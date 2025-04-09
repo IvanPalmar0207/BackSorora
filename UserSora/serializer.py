@@ -1,20 +1,10 @@
 from rest_framework import serializers, generics
-from .models import User
+from .models import User, ageUser_tb, educationLevelUser_tb, relationKindUser_tb, workUser_tb, rangeSalary_tb
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = [
-            'id', 
-            'email', 
-            'password', 
-            'age', 
-            'educationLevel', 
-            'relationKind',
-            'haveKids',
-            'workSituation', 
-            'salaryRange'
-        ]
+        fields = '__all__'        
         
         extra_kwargs = {
             'password' : {
@@ -33,3 +23,28 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         
         return user
+
+class AgeUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ageUser_tb
+        fields = '__all__'    
+        
+class EducationUserSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = educationLevelUser_tb
+        fields = '__all__'
+        
+class RelationUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = relationKindUser_tb
+        fields = '__all__'
+        
+class WorkUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = workUser_tb
+        fields = '__all__'
+    
+class SalaryUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = rangeSalary_tb
+        fields = '__all__'

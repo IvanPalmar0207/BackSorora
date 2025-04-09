@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-6km%a#n0x6+%9yukl4k9m6kzcp6r&t!+!ah56k=k7c#2n_u*2o
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://sorora.areandina.edu.co', 'http://localhost:5173/']
 
 #REST AND SIMPLE JWT CONFIG
 
@@ -114,12 +114,14 @@ WSGI_APPLICATION = 'BackSora.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(default = os.getenv('DATABASE_URL'))        
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'sorora',
-        #'USER' : 'root',
-        #'PASSWORD' : '',
-        #'HOST' : 'localhost',
-        #'PORT' : '3306'    
+        #{
+            #'ENGINE': 'django.db.backends.mysql',
+            #'NAME': 'sorora',
+            #'USER' : 'root',
+            #'PASSWORD' : '',
+            #'HOST' : 'localhost',
+            #'PORT' : '3306'
+        #}
 }
 
 

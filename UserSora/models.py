@@ -26,16 +26,41 @@ class CustomUserManager(BaseUserManager):
         
         return self._create_user(email, password, **extra_fields)
         
+class ageUser_tb(models.Model):
+    ageUser = models.CharField(max_length = 255, verbose_name = 'Age User')
+    
+    def __str__(self):
+        return self.ageUser
+    
+class educationLevelUser_tb(models.Model):
+    educationUser = models.CharField(max_length = 255, verbose_name = 'Education User')
+    def __str__(self):
+        return self.educationUser
+    
+class relationKindUser_tb(models.Model):
+    relationUser = models.CharField(max_length = 255, verbose_name = 'Relation User' )
+    
+    def __str__(self):
+        return self.relationUser
+    
+class workUser_tb(models.Model):
+    workUser = models.CharField(max_length = 255, verbose_name = 'Work User')
+    def __str__(self):
+        return self.workUser
+class rangeSalary_tb(models.Model):
+    salaryUser = models.CharField(max_length = 255, verbose_name = 'Salary User' )
+    def __str__(self):
+        return self.salaryUser    
 class User(AbstractBaseUser, PermissionsMixin):    
     email = models.EmailField(max_length=250, unique=True, verbose_name='Email User')
     password = models.CharField(max_length = 300, verbose_name='User Password')
         
-    age = models.CharField(max_length = 250, verbose_name = 'User Age', null=True)
-    educationLevel = models.CharField(max_length = 250, verbose_name = 'Education Level', null = True)    
-    relationKind = models.CharField(max_length = 250, verbose_name = 'Relation Kind', null = True)
-    haveKids = models.BooleanField(max_length = 250, verbose_name = 'Have Kids', null = True )
-    workSituation = models.CharField(max_length = 250, verbose_name = 'Work Situation', null = True )
-    salaryRange = models.CharField(max_length = 250, verbose_name = 'Salary Range', null = True)
+    ageUser = models.ForeignKey(ageUser_tb, on_delete = models.CASCADE, null = True, blank = True)
+    educationUser = models.ForeignKey(educationLevelUser_tb, on_delete = models.CASCADE, null = True, blank = True)
+    relationUser = models.ForeignKey(relationKindUser_tb, on_delete = models.CASCADE, null = True, blank = True)
+    workUser = models.ForeignKey(workUser_tb, on_delete = models.CASCADE, null = True, blank = True)
+    salaryUser = models.ForeignKey(rangeSalary_tb, on_delete = models.CASCADE, null = True, blank = True)    
+    manyKid = models.CharField(max_length = 250, verbose_name = 'Many Kids', null = True, blank = True)
     
     is_active = models.BooleanField(default = True)
     is_superuser = models.BooleanField(default = False)
@@ -52,4 +77,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
-    
