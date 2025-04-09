@@ -31,8 +31,8 @@ SECRET_KEY = 'django-insecure-6km%a#n0x6+%9yukl4k9m6kzcp6r&t!+!ah56k=k7c#2n_u*2o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://sorora-1.firebaseapp.com/', 'https://sorora.areandina.edu.co', 'http://localhost:5173/']
-CSRF_TRUSTED_ORIGINS = ['https://sorora-1.firebaseapp.com/', 'https://sorora.areandina.edu.co', 'http://localhost:5173/']
+ALLOWED_HOSTS = ['https://backsorora-production.up.railway.app','https://sorora-1.firebaseapp.com/', 'https://sorora.areandina.edu.co', 'http://localhost:5173/']
+CSRF_TRUSTED_ORIGINS = ['https://backsorora-production.up.railway.app', 'https://sorora-1.firebaseapp.com/', 'https://sorora.areandina.edu.co', 'http://localhost:5173/']
 
 #REST AND SIMPLE JWT CONFIG
 
