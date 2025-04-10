@@ -96,7 +96,7 @@ def send_magic_link(request):
         return Response({'message' : 'El correo no existe, intenta nuevamente.'}, status = 404)    
     
     token = signer.sign(user.id) #Generate a secure token with the user id
-    magic_link = f'http://localhost:5173/confirmPassword/{token}'
+    magic_link = f'https://sorora.areandina.edu.co/confirmPassword/{token}'
     
     send_mail(
         'Recuperación de contraseña',
