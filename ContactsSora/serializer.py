@@ -15,3 +15,4 @@ class userContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = userContactConfidence_tb
         fields = '__all__'
+        extra_kwargs = {'ownerUser' : {'read_only' : True}}
