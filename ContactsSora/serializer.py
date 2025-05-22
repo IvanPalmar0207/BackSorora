@@ -14,4 +14,4 @@ class arCategorySerializer(serializers.ModelSerializer):
 class userContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = userContactConfidence_tb
-        fields = '__all_'
+        fields = '__all__'
