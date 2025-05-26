@@ -4,7 +4,8 @@ from .models import AttentionRoute_tb, categoryAR_tb, userContactConfidence_tb
 class ARSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttentionRoute_tb
-        fields = ['id', 'titleCat', 'whatsappAR', 'phoneAR', 'locationAR']         
+        fields = '__all__'
+        extra_kwargs = {'nameCat' : {'read_only' : True}}
         
 class arCategorySerializer(serializers.ModelSerializer):
     class Meta:

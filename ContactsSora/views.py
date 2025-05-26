@@ -5,15 +5,21 @@ from .serializer import ARSerializer, arCategorySerializer, userContactSerialize
 from .models import AttentionRoute_tb, categoryAR_tb, userContactConfidence_tb
 
 #Attention Routes Views
-class ARViewSet(viewsets.ModelViewSet):
-    queryset = AttentionRoute_tb.objects.all()
+class ARViewSet(viewsets.ModelViewSet):    
     serializer_class = ARSerializer
     permission_classes = [IsAuthenticated]
     
-class ARViewSetUser(generics.ListAPIView):
-    queryset = AttentionRoute_tb.objects.all()
+    def get_queryset(self):
+        categoryId = self.request.query_params.get('id')
+        return AttentionRoute_tb.objects.filter(nameCat = categoryId)
+    
+class ARViewSetUser(generics.ListAPIView):    
     serializer_class = ARSerializer
     permission_classes = [AllowAny]
+    
+    def get_queryset(self):
+        categoryId = self.request.query_params.get('id')
+        return AttentionRoute_tb.objects.filter(nameCat = categoryId)
     
 class CatOneViewSet(generics.ListAPIView):
     serializer_class = ARSerializer

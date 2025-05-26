@@ -8,7 +8,7 @@ class categoryAR_tb(models.Model):
     imageCat = ResizedImageField(size = [600, 600], quality = 85, upload_to = 'media', verbose_name = 'Image Cat')
     
 class AttentionRoute_tb(models.Model):            
-    titleCat = models.ForeignKey(categoryAR_tb, on_delete = models.CASCADE)    
+    nameCat = models.ForeignKey(categoryAR_tb, on_delete = models.CASCADE)    
     
 class userContactConfidence_tb(models.Model):
     nameContact = models.CharField(max_length = 250, verbose_name = 'Name Contact')
