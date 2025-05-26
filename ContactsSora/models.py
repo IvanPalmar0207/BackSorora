@@ -1,13 +1,13 @@
 from django.db import models
 from UserSora.models import User
+from django_resized import ResizedImageField
 
 class categoryAR_tb(models.Model):
-    titleCat = models.CharField(max_length = 150, verbose_name = 'Title Net')
-
-class AttentionRoute_tb(models.Model):    
-    whatsappAR = models.CharField(max_length = 30, verbose_name = 'Whatsapp AR', null = True)
-    phoneAR = models.CharField(max_length = 35, null = True , verbose_name = 'Phone AR')
-    locationAR = models.CharField(max_length = 250, null = True, verbose_name = 'Location AR')
+    nameCat = models.CharField(max_length = 150, verbose_name = 'Title Cat')    
+    descriptionCat = models.TextField(verbose_name = 'Description Cat')
+    imageCat = ResizedImageField(size = [600, 600], quality = 85, upload_to = 'media', verbose_name = 'Image Cat')
+    
+class AttentionRoute_tb(models.Model):            
     titleCat = models.ForeignKey(categoryAR_tb, on_delete = models.CASCADE)    
     
 class userContactConfidence_tb(models.Model):
