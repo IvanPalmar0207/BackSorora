@@ -27,7 +27,7 @@ class CatOneViewSet(generics.ListAPIView):
     
     def get_queryset(self):                
         categoryId = self.request.query_params.get('id')
-        return AttentionRoute_tb.objects.filter(titleCat = categoryId)
+        return AttentionRoute_tb.objects.filter(nameCat = categoryId)
 
 #CategoryRA Views    
 class CatArViewSet(viewsets.ModelViewSet):
