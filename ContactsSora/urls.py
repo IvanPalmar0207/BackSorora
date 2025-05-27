@@ -3,10 +3,10 @@ from rest_framework import routers
 from .views import ARViewSet, ARViewSetUser, CatArViewSet, CatArViewSetUser, CatOneViewSet, CatGetOneView, UserContactView
 
 routerAR = routers.DefaultRouter()
-routerAR.register(r'AR', ARViewSet)
+routerAR.register(r'AR', ARViewSet, basename = 'Ar Router')
 
 routerCat = routers.DefaultRouter()
-routerCat.register(r'catAr', CatArViewSet)
+routerCat.register(r'catAr', CatArViewSet, basename = 'Cat Router')
 
 routerContactUser = routers.DefaultRouter()
 routerContactUser.register(r'userCon', UserContactView, basename = 'userCon')
